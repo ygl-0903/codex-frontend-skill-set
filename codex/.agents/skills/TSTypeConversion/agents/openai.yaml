@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenAPI TS Converter"
+  short_description: "Generate TypeScript from Swagger and OpenAPI sources"
+  default_prompt: "Use the bundled scripts in this skill to convert Swagger or OpenAPI input into TypeScript output, write files into outputs/ by default, and choose extends, intersection, or union types based on schema semantics."

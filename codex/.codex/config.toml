@@ -1,0 +1,6 @@
+# Minimal Codex config for the Codex-first workflow in this repo.
+
+model = "gpt-5.4"
+review_model = "gpt-5.4-mini"
+model_reasoning_effort = "high"
+project_doc_fallback_filenames = ["AGENTS.md", "CLAUDE.md"]
