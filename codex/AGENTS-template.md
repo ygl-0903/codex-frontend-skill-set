@@ -1,15 +1,15 @@
 # <project_name-bd-frontend> 项目指引（Codex）
 
-本文件是 Codex 在本仓库的主入口。历史上的其他 Agent 配置如果仍存在，可作为兼容参考，但不作为主维护入口。
-
 ## 默认协作方式
 
 - 默认使用中文沟通。
 - 代码、命令、路径、类型名、接口字段名保持原文。
-- 做模块开发时，先读 `docs/modules/<feature>.md`，聊天里优先发文件路径，不要粘贴大段全文。
+- 做模块开发时，如果项目采用需求卡流程，先读 `docs/modules/<feature>.md`；聊天里优先发文件路径，不要粘贴大段全文。
 - 使用 `<project_skills_dir-.agents/skills/>` 中的技能。
 
 ## 技术栈
+
+以下是项目落地后的技术栈约束。模板迁移时只保留目标项目真实使用的工具链。
 
 - 框架：`<frontend_framework-React 18>` + `<language-TypeScript>` + `<build_tool-Vite 5>`
 - 路由：`<router_library-react-router-dom v6>`，路由定义在 `<project_router_file-src/router/index.tsx>`
@@ -18,6 +18,8 @@
 - 状态：`<state_library-Zustand>`、`<react_hooks_library-ahooks>`、部分 `<request_scene_library-@alova/scene-react>`
 
 ## 目录约定
+
+目录约定必须来自目标项目现状。不存在的目录不要为了匹配模板而新建，除非当前任务明确要求建立该目录结构。
 
 - 页面：`<project_pages_dir-src/pages/>`，按业务域分目录，例如 `<example_business_dirs-User/、Home/>`
 - 布局与侧边栏：`<project_layout_dir-src/Layout/>`
@@ -29,6 +31,8 @@
 
 ## 本地开发
 
+命令以目标项目的包管理器和脚本为准。若命令缺失，先读取 `package.json` 或项目 README 确认，不要臆造脚本。
+
 - 安装依赖：`<install_command-yarn>`
 - 启动：`<dev_command-yarn dev>`
 - 构建：`<build_command-yarn build>`
@@ -38,7 +42,7 @@
 
 ## 强约束
 
-1. 新模块开始前，先找最像的旧页面，优先看 `<reference_detail_page_pattern-src/pages/Application/**>` 和 `<reference_complex_page_pattern-src/pages/Iteration/**>`。
+1. 新模块开始前，先找最像的旧页面；参考页路径必须替换成目标项目真实存在的页面，例如 `<reference_detail_page_pattern-src/pages/Application/**>` 和 `<reference_complex_page_pattern-src/pages/Iteration/**>`。
 2. 所有 HTTP 请求都必须经过 `<project_request_entry-src/utils/requests.ts>`；业务方法写在 `<project_service_glob-src/service/*.ts>`。
 3. 类型放在 `<project_types_dir-src/models/typings/>` 或该功能既有的 model 文件中。
 4. 新路由在 `<project_router_file-src/router/index.tsx>` 中按现有 `<project_route_registration_pattern-RouteObject / TRouteItem>` 风格注册。
@@ -68,11 +72,15 @@
 
 ## 高价值参考页
 
+本节只能列目标项目真实存在且值得模仿的页面。迁移模板时，如果找不到等价参考页，就删掉本节或标记为待补，不要保留源项目路径。
+
 - 详情 + 子区块页面：`<reference_detail_page_pattern-src/pages/Application/AppDetail>`、`<reference_detail_page_pattern-src/pages/Iteration/IterationDetail>`
 - 创建类表单：`<reference_form_page_pattern-src/pages/Application/AppCreate>`
 - 复杂内页：`<reference_complex_page_pattern-src/pages/Iteration/DeployGraphs>`
 
 ## 模块工作流
+
+以下流程只在目标项目采用需求卡和阶段化 skill 时启用。若项目没有这些 skill，保留对应工程原则即可，不要引用不存在的入口。
 
 模块开发默认分五阶段：
 
@@ -86,7 +94,7 @@
 
 ## 技能入口
 
-仓库级技能位于 `<project_skills_dir-.agents/skills/>`：
+仓库级技能位于 `<project_skills_dir-.agents/skills/>`。只列目标项目实际存在的 skill；缺失的条目要删除，不要让 Codex 尝试调用不存在的能力。
 
 - `bd-fe-conventions`：项目规范
 - `module-demand`：需求整理阶段
